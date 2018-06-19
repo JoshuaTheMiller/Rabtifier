@@ -1,0 +1,40 @@
+{
+    "manifest_version": 2,
+    "name": "Rabbit Message Formatter",
+    "description": "Formats Rabbit MQ Messages a bit nicer.",
+    "version": "0.0",
+    "page_action": {
+        "default_icon": "icon.png",
+        "default_title": "Rabbit Message Formatter",
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "scripts": [
+            "eventPage.js"
+        ],
+        "persistent": false
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "file:///*/RabbitMQ%20Management.html",
+                "http://dev-enterpriseservicebus/*",
+                "http://enterpriseservicebus/*"
+            ],
+            "js": [
+                "jquery-3.3.1.min.js",
+                "rmf_cs.js"
+            ],
+            "css": [
+                "edit.css"
+            ]
+        }
+    ],
+    "permissions": [
+        "tabs",    
+        "downloads",
+        "file:///*/RabbitMQ%20Management.html",
+        "http://dev-enterpriseservicebus/*",
+        "http://enterpriseservicebus/*"
+    ]
+}
