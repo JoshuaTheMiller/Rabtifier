@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Rabtifier - Rabbit Message Formatter",
     "description": "Formats Rabbit MQ Messages a bit nicer.",
-    "version": "0.2",
+    "version": "0.3",
     "page_action": {
         "default_icon": "icon.png",
         "default_title": "Rabtifier",

@@ -14,6 +14,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             })
             .children("td")
             .html(function () {
+                let originalHtml = $(this).html();
+
                 let unformattedText = $(this).find(".msg-payload").text()
                     .replace(/"\s*{\\/g, '{')
                     .replace(/}\s*"/g, '}')
@@ -23,7 +25,9 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 
                 let formattedText = syntaxHighlight(obj);
 
-                return '<pre>' + formattedText.replace(/\\r\\n/g, '\n') + '</pre>';
+                let elementToAppend = '<pre>' + formattedText.replace(/\\r\\n/g, '\n') + '</pre>';
+
+                return "<table><tbody><tr>" + originalHtml + "</tr><tr>" + elementToAppend + "</tr></tbody></table>";
             });
     }
 
