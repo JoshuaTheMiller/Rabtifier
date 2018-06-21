@@ -1,8 +1,4 @@
-// chrome.webRequest.onComplete.addListener(function(request, sender, sendResponse) {
-//     console.log("Error Response Detected!");
-// }, {urls:["*Error_Queue_*"]});
-
-// Requires "webRequest" permission which is not available to Event Pages
+import * as $ from 'jquery';
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.action == "formatMessages") {
@@ -32,7 +28,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     }
 
     if (request.action == "downloadAllPayloadsAsJson") {
-        let payloadArray = [];
+        let payloadArray = [""];
+        payloadArray.pop();
 
         $("#msg-wrapper .box tr")
             .filter(function (index, item) {
@@ -59,7 +56,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     }
 });
 
-function syntaxHighlight(json) {
+function syntaxHighlight(json:string) {
     // Thanks to this wizard of a developer:
     // https://stackoverflow.com/a/7220510/1542187
     if (typeof json != 'string') {
@@ -67,7 +64,7 @@ function syntaxHighlight(json) {
     }
 
     json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+    return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match:string) {
         var cls = 'number';
         if (/^"/.test(match)) {
             if (/:$/.test(match)) {

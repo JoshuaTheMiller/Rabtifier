@@ -1,0 +1,25 @@
+{
+  "name": "rabtifier",
+  "version": "0.3.0",
+  "description": "Formats Rabbit MQ Messages a bit nicer.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoshuaTheMiller/Rabtifier.git"
+  },
+  "author": "Joshua Miller",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JoshuaTheMiller/Rabtifier/issues"
+  },
+  "homepage": "https://github.com/JoshuaTheMiller/Rabtifier#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/chrome": "0.0.69",
+    "@types/jquery": "^3.3.4",
+    "typescript": "^2.9.2"
+  }
+}

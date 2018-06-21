@@ -1,11 +1,18 @@
-let downloadUrl = new URL("https://example.com");
+import * as tm from './tabManipulation';
+import * as $ from 'jquery';
+
+let downloadUrl = "";
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.action == "show") {
         console.log("Message received.")
 
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-            chrome.pageAction.show(tabs[0].id);
+            let getTabIdResponse = tm.getTabId(tabs[0]);
+
+            if (getTabIdResponse.IsValid) {
+                chrome.pageAction.show(getTabIdResponse.Id);                
+            }
         });
     }
 
@@ -15,10 +22,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         console.log(request.payloads);
 
         console.log(Array.isArray(request.payloads));
-        
+
         let objectsAsStringArray = [];
-        
-        for(let i = 0; i < request.payloads.length; i++) {
+
+        for (let i = 0; i < request.payloads.length; i++) {
             objectsAsStringArray.push(JSON.stringify(request.payloads[i], undefined, 4));
         }
 

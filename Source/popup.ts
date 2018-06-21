@@ -1,3 +1,6 @@
+import * as tm from './tabManipulation';
+import * as $ from 'jquery';
+
 $(function () {
     $("#formatMessagesButton").click(function () {
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -5,7 +8,11 @@ $(function () {
                 action: "formatMessages"
             }
 
-            chrome.tabs.sendMessage(tabs[0].id, message);
+            let getTabIdResponse = tm.getTabId(tabs[0]);
+
+            if (getTabIdResponse.IsValid) {
+                chrome.tabs.sendMessage(getTabIdResponse.Id, message);
+            }
         })
     });
 
@@ -15,7 +22,11 @@ $(function () {
                 action: "downloadAllPayloadsAsJson"
             }
 
-            chrome.tabs.sendMessage(tabs[0].id, message);
+            let getTabIdResponse = tm.getTabId(tabs[0]);
+
+            if (getTabIdResponse.IsValid) {
+                chrome.tabs.sendMessage(getTabIdResponse.Id, message);
+            }
         })
     });
 });
