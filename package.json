@@ -4,7 +4,8 @@
   "description": "Formats Rabbit MQ Messages a bit nicer.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "rebuild": "echo \"Rebuilding...\" && gulp rebuild && tsc"
   },
   "repository": {
     "type": "git",
@@ -16,10 +17,16 @@
     "url": "https://github.com/JoshuaTheMiller/Rabtifier/issues"
   },
   "homepage": "https://github.com/JoshuaTheMiller/Rabtifier#readme",
-  "dependencies": {},
+  "dependencies": {
+    "jquery": "^3.3.1"
+  },
   "devDependencies": {
     "@types/chrome": "0.0.69",
     "@types/jquery": "^3.3.4",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.4.0",
+    "gulp-npm-dist": "^1.0.2",
+    "gulp-sequence": "^1.0.0",
     "typescript": "^2.9.2"
   }
 }
